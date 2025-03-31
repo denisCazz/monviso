@@ -1,10 +1,74 @@
-<nav class="bg-blue-500 text-white p-4 shadow-md fixed top-0 w-full z-100">
+---
+import Image from "astro/components/Image.astro"
+import logo from "../../src/assets/logo.jpg"
+---
+
+<nav class="bg-blue-600 text-white p-4 shadow-md fixed top-0 w-full z-999">
     <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Monviso</h1>
-        <ul class="flex space-x-4">
-            <li><a href="/" class="hover:underline">Home</a></li>
-            <li><a href="/servizi" class="hover:underline">Servizi</a></li>
-            <li><a href="/contatti" class="hover:underline">Contatti</a></li>
+        <!-- Logo e testo -->
+        <div class="flex items-center space-x-3">
+            <Image src={logo} alt="Logo Monviso" class="object-contain rounded-full" height={60} width={60} />
+            <div>
+                <h1 class="text-2xl font-bold leading-tight">MONVISO</h1>
+                <p class="text-xs text-blue-100">Impresa di pulizie</p>
+            </div>
+        </div>
+
+        <!-- Menu desktop -->
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="/" class="hover:underline font-medium">Home</a></li>
+            <li><a href="/servizi" class="hover:underline font-medium">Servizi</a></li>
+            <li><a href="/contatti" class="hover:underline font-medium">Contatti</a></li>
+        </ul>
+
+        <!-- Bottone menu mobile -->
+        <button class="md:hidden focus:outline-none" id="mobile-menu-button" aria-label="Menu mobile">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <div class="md:hidden hidden bg-blue-700 w-full absolute left-0 top-full py-4 shadow-lg" id="mobile-menu">
+        <ul class="flex flex-col space-y-4 px-4">
+            <li><a href="/" class="block py-3 px-4 hover:bg-blue-600 rounded-lg transition">Home</a></li>
+            <li><a href="/servizi" class="block py-3 px-4 hover:bg-blue-600 rounded-lg transition">Servizi</a></li>
+            <li><a href="/contatti" class="block py-3 px-4 hover:bg-blue-600 rounded-lg transition">Contatti</a></li>
         </ul>
     </div>
 </nav>
+
+<!-- Spazio per la navbar fixed -->
+<div class="h-20 md:h-24"></div>
+
+<script is:inline>
+    // Script migliorato per il menu mobile
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            menuButton.setAttribute('aria-expanded', !mobileMenu.classList.contains('hidden'));
+        };
+        
+        if(menuButton && mobileMenu) {
+            // Toggle al click
+            menuButton.addEventListener('click', toggleMenu);
+            
+            // Chiudi il menu quando si clicca su un link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+            
+            // Chiudi il menu quando si clicca fuori
+            document.addEventListener('click', (e) => {
+                if(!menuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
+</script>

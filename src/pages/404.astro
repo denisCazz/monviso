@@ -1,0 +1,50 @@
+---
+// src/pages/404.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+// Potresti aggiungere un'immagine a tema 404 se vuoi, importandola come nelle altre pagine
+// import notFoundImage from '../assets/not-found.png';
+---
+
+<Layout title="404 - Pagina Non Trovata | Pulizie Professionali Carmagnola">
+  <Navbar />
+
+  <main class="flex-grow"> {/* Aggiunto flex-grow per spingere il footer in basso se il contenuto è poco */}
+    <section class="py-24 px-4 text-center bg-white">
+      <div class="max-w-2xl mx-auto">
+        {/* Potresti inserire un'immagine qui se ne hai una */}
+        {/* <Image src={notFoundImage} alt="Pagina non trovata" width="300" height="300" class="mx-auto mb-8"/> */}
+
+        <h1 class="text-6xl font-bold text-blue-600 mb-4">404</h1>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Oops! Pagina Non Trovata</h2>
+        <p class="text-lg text-gray-600 mb-10">
+          Sembra che la pagina che stai cercando non esista più o sia stata spostata.
+          Controlla l'indirizzo che hai inserito oppure torna alla nostra homepage.
+        </p>
+        <a href="/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+          Torna alla Homepage
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Assicura che il layout occupi almeno tutta l'altezza dello schermo */
+  /* Questo potrebbe essere già gestito nel tuo Layout.astro */
+  /* Se non lo è, potresti aver bisogno di una struttura simile a questa */
+  /* nel tuo file Layout.astro o global.css: */
+  /*
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  main {
+    flex-grow: 1;
+  }
+  */
+</style>

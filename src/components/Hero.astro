@@ -2,8 +2,6 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Image from 'astro/components/Image.astro';
-import teamPulizie from '../assets/teampulizie.png';
-import cleaningEquipment from '../assets/cleaningEquipment.png';
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 ---
@@ -35,7 +33,7 @@ import Navbar from "../components/Navbar.astro";
             Affidati a noi per un servizio puntuale, efficace e personalizzato, che risponde alle tue esigenze con professionalità e precisione.
         </div>
         <div class="rounded-lg overflow-hidden shadow-lg">
-          <Image src={teamPulizie} alt="Il nostro team di pulizie" width="600" height="400" class="w-full h-auto object-cover hidden sm:block"/>
+          <img src="/images/teampulizie.png" alt="Il nostro team di pulizie" width="600" height="400" class="w-full h-auto object-cover rounded-lg shadow-lg hidden sm:block"/>
         </div>
       </div>
     </section>
@@ -44,7 +42,7 @@ import Navbar from "../components/Navbar.astro";
     <section id="servizi" class="py-16 px-4 bg-gray-50">
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div class="md:order-1">
-          <Image src={cleaningEquipment} alt="Attrezzature professionali" width="600" height="400" class="w-full h-auto object-cover rounded-lg shadow-lg hidden sm:block"/>
+          <img src="/images/cleaningEquipment.png" alt="Attrezzature professionali" width="600" height="400" class="w-full h-auto object-cover rounded-lg shadow-lg hidden sm:block"/>
         </div>
         <div class="md:order-2">
           <h2 class="text-3xl font-bold text-blue-600 mb-6">I Nostri Servizi</h2>
